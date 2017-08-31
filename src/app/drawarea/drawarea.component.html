@@ -1,0 +1,63 @@
+<md-sidenav-container>
+
+  <md-sidenav #sidenav>
+      <input hidden type="file" id="iFile" imageUpload (imageSelected)="selected($event)" [resizeOptions]="resizeOptions">
+      <button md-button><label for="iFile">Загрузить картинку</label></button>
+    <h2>Размеры <br></h2>
+    Высота
+    <input type="number" [(ngModel)]="newCanvasHeight">
+    Ширина
+    <input type="number" [(ngModel)]="newCanvasWidth">
+    <div class="btnWrap" align="end" layout="row">
+      <button md-button (click)="changeCanvasSize()" class="btn btn-default" align="right" >Изменить</button> <br>
+    </div>
+    <h2>Фильтры<br></h2>
+    <canvas #fGrayness md-button (click)="this.context.putImageData(filters.Grayness(this.context),0,0); this.stateManager.saveState(this.context.canvas, false, false);this.saveData();"></canvas>
+    <canvas #fBrightness md-button (click)="this.context.putImageData(filters.Brightness(this.context),0,0); this.stateManager.saveState(this.context.canvas, false, false);this.saveData();"></canvas>
+    <canvas #fDesaturate md-button (click)="this.context.putImageData(filters.Desaturate(this.context),0,0); this.stateManager.saveState(this.context.canvas, false, false);this.saveData();"></canvas>
+    <canvas #fMosaic md-button (click)="this.context.putImageData(filters.Mosaic(this.context),0,0); this.stateManager.saveState(this.context.canvas, false, false);this.saveData();"></canvas>
+    <canvas #fDisplacementMapFilter md-button (click)="this.context.putImageData(filters.DisplacementMapFilter(this.context),0,0); this.stateManager.saveState(this.context.canvas, false, false);this.saveData();"></canvas>
+    <canvas #fFlip md-button (click)="this.context.putImageData(filters.Flip(this.context),0,0); this.stateManager.saveState(this.context.canvas, false, false);this.saveData();"></canvas>
+    <canvas #fGamma md-button (click)="this.context.putImageData(filters.Gamma(this.context),0,0); this.stateManager.saveState(this.context.canvas, false, false);this.saveData();"></canvas>
+    <canvas #fInvert md-button (click)="this.context.putImageData(filters.Invert(this.context),0,0); this.stateManager.saveState(this.context.canvas, false, false);this.saveData();"></canvas>
+    
+    <!-- <canvas #fGrayness></canvas>
+    <canvas #fbrightness></canvas>
+    <canvas #fdesaturate></canvas>
+    <canvas #fdisplacementMapFilter></canvas>
+    <canvas #fFlip></canvas>
+    <canvas #fGamma></canvas>
+    <canvas #fInvert></canvas> -->
+  </md-sidenav>
+
+  <div class="sidenav-content">
+    <div class="wrap">
+      <nav class="navbar navbar-dark indigo">
+
+        <div class="arrows">
+          <md-icon class="btnMenu" (click)="sidenav.open()">menu</md-icon>
+          <md-icon [ngClass]="(this.stateManager.undo_list.length) ? 'btnUndo' : 'btnUndoDisable'" (click)="this.stateManager.undo(this.context.canvas, this.context)">undo</md-icon>
+          <md-icon [ngClass]="(this.stateManager.redo_list.length) ? 'btnRedo' : 'btnRedoDisable'" (click)="this.stateManager.redo(this.context.canvas, this.context);">redo</md-icon>
+        </div>
+          
+          
+        <div class="controls">
+          <div class="width">
+            <input type="range" min="1" max="50" [(ngModel)]="lineWidth"/> <br>
+            Толщина
+          </div>
+          <div class="color">
+            <input type="color" [(ngModel)]="lineColor" placeholder="color" /> <br>
+            Цвет
+          </div>
+        </div>
+          
+        <div class="opts">
+          <button class="resetBtn" md-button (click)="resetCanvas()">Reset</button>
+          <button (click)="downloadCanvas($event)" md-icon-button class="btnDownload"><md-icon>file_download</md-icon></button>
+        </div>
+      </nav>
+      <canvas #canvas (mousemove)="putPoint($event)" (mousedown)="engage($event)" (mouseup)="disengage($event)" width="500" height="400"></canvas>
+    </div>
+  </div>
+</md-sidenav-container>

@@ -1,0 +1,131 @@
+.wrap{
+    background: #CBCBCB;
+    height: 100%;
+}
+
+canvas{
+    margin: 7px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+nav{
+    width: 100%;
+}
+
+md-sidenav{
+    width: 25%;
+    padding: 25px;
+    input{
+        display: block;
+    }
+
+    .btnWrap{
+        margin: 10px 0;
+    }
+
+    canvas{
+        width: 45%;
+        margin: 2px;
+
+         border: 2px solid #A8A7A7;
+        padding: 0;
+        margin-bottom: -2px; 
+        cursor: pointer;
+        background: #9A9A9A;
+    }
+}
+
+
+
+.sidenav-content{
+    button{
+        //background: white;
+    }
+    label{
+        height: 50%;
+    }
+
+    .arrows{
+        display: inline-block;
+        width: 140px;
+        float: left;
+        .btnMenu, .btnUndo{
+            color: white;
+            cursor: pointer;
+            font-size: 26px;
+            margin: 0 2px; 
+            user-select: none;
+        }
+
+        .btnMenu{
+            margin-right: 20px; 
+        }
+
+    }
+
+    .controls{
+        width: calc(~'100% - 300px');
+
+        .width{
+            display: inline-block;
+            text-align: center;
+            color: white;
+            font-weight: 500;
+            font-size: 12px;
+            input{
+                display: inline-block;
+                width: 70px;
+            }
+        }
+
+        .color{
+            display: inline-block;
+            text-align: center;
+            color: white;
+            font-weight: 500;
+            font-size: 12px;
+            input{
+                display: inline-block;
+                height: 27px;
+                width: 50px;
+            }
+        }
+    }
+
+}
+
+.opts{
+    width: 160px;
+    float: right;
+    vertical-align: middle;
+    .resetBtn{
+        vertical-align: bottom;
+    }
+}
+
+md-sidenav-container, sidenav-content{
+    height: 100%;
+    background: #CBCBCB;
+}
+
+.btnRedo, .btnDownload{
+    color: white;
+    cursor: pointer;
+    font-size: 26px;
+    margin: 0 7px; 
+    user-select: none;
+}
+
+
+
+.btnUndoDisable, .btnRedoDisable{
+    cursor: default;
+    font-size: 26px;
+    margin: 0 7px; 
+    user-select: none;
+    color: #A4A4A4;
+}
+
+.resetBtn{
+    color: white;
+}
